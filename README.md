@@ -1,5 +1,5 @@
-# service-template
-A template for creating a new service with configuration, build and deploy, test structure and es-lint configuration
+# Cango-Coms
+A service that handles coms with customers and drivers. It will receive messages, add locales and send them via various channels to users.
 
 # Accesing production cluster
 
@@ -11,8 +11,8 @@ To access the service, you have to run
 
 This creates a proxy to the cluster.
 
-You can acess swagger here `http://localhost:8080/api/v1/proxy/namespaces/default/services/st-service:http/explorer_swagger_new/`
+You can acess swagger here `http://localhost:8080/api/v1/proxy/namespaces/default/services/coms-service:http/explorer_swagger_new/`
 
 And Make http requests such as this:
 
-`curl -X GET --header 'Accept: application/json' 'http://localhost:8080/api/v1/proxy/namespaces/default/services/st-service:http/api/v1/Vitals'`
+`curl -X GET --header 'Accept: application/json' 'http://localhost:8080/api/v1/proxy/namespaces/default/services/coms-service:http/api/v1/Vitals'`
