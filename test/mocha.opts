@@ -1,0 +1,4 @@
+--ui bdd
+--require test/support/env.js
+--recursive
+--timeout 20000

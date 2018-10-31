@@ -1,0 +1,7 @@
+# Will add integration test steps
+# Require using Docker-Compose to up databases etc
+steps:
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['run','test:unit']

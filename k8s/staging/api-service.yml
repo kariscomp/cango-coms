@@ -1,0 +1,16 @@
+# Can be accessed by running proxy 
+# kubectl proxy --port=8080
+# http://localhost:8080/api/v1/proxy/namespaces/default/services/st-service:http
+apiVersion: v1
+kind: Service
+metadata:  
+  name: coms-service
+spec:
+  selector:    
+    app: cango-coms
+  type: ClusterIP
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 3000
+    protocol: TCP

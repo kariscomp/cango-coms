@@ -1,0 +1,20 @@
+{
+    "extends": "../.eslintrc.json",
+    "rules": {
+        "max-nested-callbacks": ["error", 17],
+        "prefer-arrow-callback": 0,
+        "func-names": 0,
+        "space-before-function-paren": 0,
+        "spaced-comment": 0,
+        "no-unused-expressions": 1,
+        "no-return-assign": 0
+    },
+    "globals": {
+        "it": true,
+        "describe": true,
+        "before": true,
+        "beforeEach": true,
+        "after": true,
+        "afterEach": true
+    }
+}

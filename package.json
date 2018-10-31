@@ -1,0 +1,56 @@
+{
+  "name": "cango-coms",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node .",
+    "test:unit": "NPM_TEST_MOCHA=true mocha --timeout 20000",
+    "test-without-logs": "NPM_TEST_MOCHA=true SPY_LOGS=true mocha --timeout 20000",
+    "test-cov": "nyc --reporter=html --reporter=text mocha"
+  },
+  "dependencies": {
+    "@google-cloud/error-reporting": "^0.5.1",
+    "@google-cloud/logging-bunyan": "^0.9.1",
+    "@google-cloud/trace-agent": "^3.1.1",
+    "bluebird": "^3.5.2",
+    "bunyan": "^1.8.12",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "helmet": "^3.10.0",
+    "loopback": "^3.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^6.2.0",
+    "loopback-connector-kv-redis": "^3.0.0",
+    "loopback-connector-mongodb": "^3.7.0",
+    "redis": "^2.8.0",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-subset": "^1.6.0",
+    "debug": "^4.0.1",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-loopback": "^8.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "license": "UNLICENSED",
+  "author": "Peter Kariuki",
+  "description": "Cango Africa Coms"
+}

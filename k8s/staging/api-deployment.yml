@@ -1,0 +1,84 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cango-coms
+  labels:
+    #Project ID
+    app: master-deck-829
+spec:
+  #Run X instances of our application
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: cango-coms
+    spec:
+      #Container details
+      containers:
+      - name: service-container
+        image: gcr.io/master-deck-829/cango-coms:v1.0.0
+        imagePullPolicy: Always
+        #Ports to expose
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /vitals/docker
+            port: 3000
+          initialDelaySeconds: 45
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/v1/Vitals
+            port: 3000
+          initialDelaySeconds: 40
+          periodSeconds: 2
+        resources:
+          limits:
+            cpu: 325m
+            memory: 500M
+          requests:
+            cpu: 250m
+            memory: 400M
+        env:
+        - name: MONGODB
+          valueFrom:
+            secretKeyRef:
+              name: safemotos-secrets
+              key: databaseUrl
+        - name: REDIS_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: safemotos-secrets
+              key: redisServer
+        - name: REDIS_PORT
+          valueFrom:
+            secretKeyRef:
+              name: safemotos-secrets
+              key: redisPort
+        - name: REDIS_PASS
+          valueFrom:
+            secretKeyRef:
+              name: safemotos-secrets
+              key: redisPass
+        - name: ENVIRONMENT
+          value: "staging"
+        - name: SERVICE_NAME
+          value: "cango-coms"
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cango-coms-deployment-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: cango-coms
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 85
